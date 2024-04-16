@@ -1,4 +1,5 @@
-# Ultralytics YOLO 🚀, GPL-3.0 license
+# Ultralytics YOLO ğŸš€, GPL-3.0 license
+# -*- coding: utf-8 -*-
 
 import hydra
 import torch
@@ -238,15 +239,15 @@ class DetectionPredictor(BasePredictor):
         if len(det) == 0:
             return log_string
         for c in det[:, 5].unique():
-            n = (det[:, 5] == c).sum()  # detections per class
-            class_index=int(c)
-            count_of_object=int(n)
-            founded_classes = {}
-            founded_classes[names[class_index]]=int(n)
-            #s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
-            count(founded_classes=founded_classes,im0=im0)
+            class_index = int(c)
+            if names[class_index] == "person":  # Sadece insan sınıfını işle
+                n = (det[:, 5] == c).sum()  # detections per class
+                count_of_object = int(n)
+                founded_classes = {}
+                founded_classes[names[class_index]] = int(n)
+                count(founded_classes=founded_classes, im0=im0)
 
-            log_string += f"{n} {self.model.names[int(c)]}{'s' * (n > 1)}, "
+                log_string += f"{n} {self.model.names[int(c)]}{'s' * (n > 1)}, "
         # write
         gn = torch.tensor(im0.shape)[[1, 0, 1, 0]]  # normalization gain whwh
         xywh_bboxs = []
@@ -254,29 +255,28 @@ class DetectionPredictor(BasePredictor):
         oids = []
         outputs = []
         for *xyxy, conf, cls in reversed(det):
-            #Add Object Blurring Code
-            #..................................................................
-            crop_obj = im0[int(xyxy[1]):int(xyxy[3]),int(xyxy[0]):int(xyxy[2])]
-            blur = cv2.blur(crop_obj,(20,20))
-            im0[int(xyxy[1]):int(xyxy[3]),int(xyxy[0]):int(xyxy[2])] = blur
-            #..................................................................
-            x_c, y_c, bbox_w, bbox_h = xyxy_to_xywh(*xyxy)
-            xywh_obj = [x_c, y_c, bbox_w, bbox_h]
-            xywh_bboxs.append(xywh_obj)
-            confs.append([conf.item()])
-            oids.append(int(cls))
+            if names[int(cls)] == "person":  # Sadece insan sınıfını işle
+                crop_obj = im0[int(xyxy[1]):int(xyxy[3]), int(xyxy[0]):int(xyxy[2])]
+                blur = cv2.blur(crop_obj, (20, 20))
+                im0[int(xyxy[1]):int(xyxy[3]), int(xyxy[0]):int(xyxy[2])] = blur
+                x_c, y_c, bbox_w, bbox_h = xyxy_to_xywh(*xyxy)
+                xywh_obj = [x_c, y_c, bbox_w, bbox_h]
+                xywh_bboxs.append(xywh_obj)
+                confs.append([conf.item()])
+                oids.append(int(cls))
         xywhs = torch.Tensor(xywh_bboxs)
         confss = torch.Tensor(confs)
-          
+
         outputs = deepsort.update(xywhs, confss, oids, im0)
         if len(outputs) > 0:
             bbox_xyxy = outputs[:, :4]
             identities = outputs[:, -2]
             object_id = outputs[:, -1]
-            
-            draw_boxes(im0, bbox_xyxy, self.model.names, object_id,identities)
+
+            draw_boxes(im0, bbox_xyxy, self.model.names, object_id, identities)
 
         return log_string
+
 
 
 @hydra.main(version_base=None, config_path=str(DEFAULT_CONFIG.parent), config_name=DEFAULT_CONFIG.name)
