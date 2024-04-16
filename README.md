@@ -1,11 +1,5 @@
 <H1 align="center">
-Object-Counting-Bluring-YOLOV8 </H1>
-
-## Google Colab File Link (A Single Click Solution)
-The google colab file link for yolov8 object tracking, blurring and  counting is provided below, you can check the implementation in Google Colab, and its a single click implementation
-,you just need to select the Run Time as GPU, and click on Run All.
-
-[`Google Colab File`](https://colab.research.google.com/drive/1haDui8z7OvITbOpGL1d0NFf6M4BxcI-y?usp=sharing)
+Object-Counting-Blurring-YOLOV8 </H1>
 
 ## YOLOv8 Segmentation with DeepSORT Object Tracking
 
