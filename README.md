@@ -47,4 +47,4 @@ python predict.py model=yolov8s.pt source="video.mp4" show=True
 -https://github.com/ultralytics/ultralytics?tab=readme-ov-file
 -(You can download pt files suitable for your purpose from this link.)
 
--https://pixabay.com/tr/videos/insanlar-ticaret-d%C3%BCkkan-me%C5%9Fgul-6387/(video link)
+-https://pixabay.com/tr/videos/insanlar-ticaret-d%C3%BCkkan-me%C5%9Fgul-6387/   (video link)
