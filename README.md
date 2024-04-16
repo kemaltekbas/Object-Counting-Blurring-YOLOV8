@@ -11,7 +11,7 @@ Object-Counting-Blurring-YOLOV8 </H1>
 ```
 git clone https://github.com/kemaltekbas/Object-Counting-Blurring-YOLOV8.git
 ```
-- Goto the cloned folder.
+- Go to the cloned folder.
 ```
 cd Object-Counting-Blurring-YOLOV8
 ```
