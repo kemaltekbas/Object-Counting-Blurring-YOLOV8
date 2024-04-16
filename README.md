@@ -48,3 +48,4 @@ python predict.py model=yolov8s.pt source="video.mp4" show=True
 -(You can download pt files suitable for your purpose from this link.)
 
 -https://pixabay.com/tr/videos/insanlar-ticaret-d%C3%BCkkan-me%C5%9Fgul-6387/   (video link)
+![blur](https://github.com/kemaltekbas/Object-Counting-Blurring-YOLOV8/assets/127952905/fe281130-36d3-4c66-bb71-f73b834984e8)
