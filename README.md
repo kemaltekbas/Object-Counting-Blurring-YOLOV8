@@ -35,14 +35,14 @@ https://drive.google.com/drive/folders/1kna8eWGrSfzaR6DtNJ8_GchGgPMv3VC8?usp=sha
 ```
 - After downloading the DeepSORT Zip file from the drive, unzip it go into the subfolders and place the deep_sort_pytorch folder into the yolo/v8/detect folder
 
-- Run the code with mentioned command below.
+- Run the code with the mentioned command below.
 
 - For yolov8 object detection, Tracking,  blurring and object counting
 ```
 python predict.py model=yolov8s.pt source="video.mp4" show=True
 ```
 - Credit to
-"""
-https://github.com/MuhammadMoinFaisal/YOLOv8-object-tracking-blurring-counting?tab=readme-ov-file
-https://github.com/ultralytics/ultralytics?tab=readme-ov-file(You can download pt files suitable for your purpose from this link.)
-"""
+-https://github.com/MuhammadMoinFaisal/YOLOv8-object-tracking-blurring-counting?tab=readme-ov-file
+-https://github.com/ultralytics/ultralytics?tab=readme-ov-file
+-(You can download pt files suitable for your purpose from this link.)
+
